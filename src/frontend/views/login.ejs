@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>log in</title>
+</head>
+
+<body>
+    <nav class="login__nav">
+        <img src="/images/matchreact-logo.png" alt="matchreact logo" title="matchreact logo">
+    </nav>
+
+    <form class="login__form" action="/login" method="POST">
+        <div class="login__form--title">
+            <h1>login to your account</h1>
+            <p>pick up from where you left off</p>
+        </div>
+
+        <div class="login__form--forms">
+            <div>
+                <label>email address</label>
+                <input type="email" name="email" placeholder="enter your email address" required>
+            </div>
+
+            <div>
+                <label>password</label>
+                <input type="password" name="password" placeholder="enter your password" minlength="8" maxlength="32" required>
+            </div>
+        </div>
+
+        <button class="login__form--button" type="submit">log in</button>
+
+        <div class="login__form--link">
+            <p>don't have an account?</p>
+            <a href="/signup">sign up here</a>
+        </div>
+    </form>
+</body>
+
+</html>

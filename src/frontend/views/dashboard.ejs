@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <title>dashboard</title>
+</head>
+
+<body>
+    <aside class="dashboard__home__sidebar">
+        <div class="dashboard__home__sidebar--logo">
+            <img src="/images/matchreact-logo.png" alt="matchreact logo" title="matchreact logo">
+        </div>
+
+        <div class="dashboard__home__sidebar--main">
+            <div>
+                <p>MAIN</p>
+            </div>
+
+            <div>
+                <img src="/images/home-icon--active.png" alt="home icon" title="home icon">
+                <p>home</p>
+            </div>
+
+            <div>
+                <img src="/images/explore-icon.png" alt="explore icon" title="explore icon">
+                <p>explore</p>
+            </div>
+        </div>
+
+        <div class="dashboard__home__sidebar--tools">
+            <div>
+                <p>TOOLS</p>
+            </div>
+
+            <div>
+                <img src="/images/analytics-icon.png" alt="analytics icon" title="analytics icon">
+                <p>analytics</p>
+            </div>
+
+            <div>
+                <img src="/images/profile-icon.png" alt="profile icon" title="profile icon">
+                <p>profile</p>
+            </div>
+
+            <% if (currentUser.role === "admin") { %>
+                <div>
+                    <img src="/images/admin-icon.png" alt="admin icon" title="admin icon">
+                    <a href="/dashboard/admin">admin</a>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="dashboard__home__sidebar--why">
+            <div>
+                <p>WHY?</p>
+            </div>
+
+            <div>
+                <img src="/images/logout-icon.png" alt="logout icon" title="logout icon">
+                <a href="/logout">logout</a>
+            </div>
+        </div>
+    </aside>
+
+    <main class="dashboard__home__main">
+        <div class="dashboard__home__main--title">
+            <p>your feed 📰</p>
+        </div>
+
+        <div class="dashboard__home__main__body">
+            <div class="dashboard__home__main__body--posts">
+                <% if (!posts.length) { %>
+                    <div class="empty__state">
+                        <h1>oops!</h1>
+                        <p>no reactions yet.</p>
+                    </div>
+                <% } %>
+
+                <% posts.forEach(post => { %>
+                    <div class="dashboard__home__main--post">
+                        <div>
+                            <p><%= post.hometeam %> <span class="span__1">v</span> <%= post.awayteam %> <span class="span__2">[<%= post.competition %>]</span></p>
+
+                            <div class="div__div__status--<%= post.status.trim().toLowerCase() %>">
+                                <div class="div__status--<%= post.status.trim().toLowerCase() %>"></div>
+                                <p class="status--<%= post.status.trim().toLowerCase() %>">
+                                    <%= post.status %>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <div>
+                                    <p><%= post.mood %></p>
+                                </div>
+
+                                <div>
+                                    <p><%= post.username %></p>
+                                    <p><%= post.club %> fan</p>
+                                </div>
+                            </div>
+
+                            <p><%= post.reaction %></p>
+                        </div>
+                        
+                        <div>
+                            <form action="/likes/<%= post.id %>" method="POST">
+                                <button type="submit">
+                                    <img src="/images/likes-icon.png" alt="Like post" title="Like post">
+                                </button>
+                                
+                                <p><%= post.likes %></p>
+                            </form>
+                            
+                            <p><%= new Date(post.createdAt).toLocaleDateString("en-US", {
+                                month: "long",
+                                day: "numeric",
+                                year: "numeric"
+                                }) %></p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <form class="dashboard__home__main__body__form" action="/dashboard" method="POST">
+                <div class="dashboard__home__main__body__form--title">
+                    <h1>react to a match</h1>
+                    <p>what match is on your mind?</p>
+                </div>
+
+                <div class="dashboard__home__main__body__form--forms">
+                    <div>
+                        <label>home team</label>
+                        <input type="text" name="hometeam" placeholder="enter home team" minlength="3" maxlength="10" required>
+                    </div>
+                        
+                    <div>
+                        <label>away team</label>
+                        <input type="text" name="awayteam" placeholder="enter away team" minlength="3" maxlength="10" required>
+                    </div>
+
+                    <div>
+                        <label>competition</label>
+                        <input type="text" name="competition" placeholder="enter match competition" minlength="3" maxlength="10" required>
+                    </div>
+
+                    <div>
+                        <label>match status</label>
+                        <select name="status" required>
+                            <option value="UPCOMING">upcoming</option>
+                            <option value="LIVE">live</option>
+                            <option value="FINISHED">finished</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>mood</label>
+                        <select name="mood" required>
+                            <option value="😊">happy</option>
+                            <option value="😢">sad</option>
+                            <option value="😡">angry</option>
+                            <option value="🤣">laughing</option>
+                            <option value="😭">crying</option>
+                            <option value="🤔">confused</option>
+                            <option value="😱">shocked</option>
+                            <option value="🙈">disbelief</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>reaction</label>
+                        <textarea name="reaction" placeholder="enter your reaction" minlength="10" maxlength="300" required></textarea>
+                    </div>
+                </div>
+
+                <button class="dashboard__home__main__body__form--button" type="submit">react</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

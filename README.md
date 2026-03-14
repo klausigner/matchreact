@@ -59,7 +59,7 @@ matchreact web application - [link](https://matchreact.onrender.com "matchreact 
 
 ---
 
-## 📥clone and run repo
+## 📥clone and install
 
 ```bash
 git clone https://github.com/klausigner/matchreact.git

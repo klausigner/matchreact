@@ -12,16 +12,27 @@ a very simple server-side rendered blog application for matchday reactions.
 
 ## 🌐live demo
 
-matchreact web application - [link](https:// "matchreact link")
+matchreact web application - [link](https://matchreact.onrender.com "matchreact url")
 
 ---
 
 ## 📦features
 
-- [X] user and admin can create posts
-- [X] admin can delete posts
 - [X] secure authentication (JWT)
-- [X] database functionality
+- [X] database functionality (MySQL)
+- [X] user and admin can create posts (/dashboard)
+- [X] admin can delete posts in an exclusive page (/dashboard/admin)
+- [X] both admin and user can logout (/dashboard/logout)
+
+---
+
+## 🔜coming soon
+
+- [X] more robust features in feed like comments (/dashboard)
+- [X] users can filter posts (/dashboard/explore)
+- [X] users can view certain analytics (/dashboard/analytics)
+- [X] users can edit profile (/dashboard/profile)
+- [X] more admin capabilities (/dashboard/admin)
 
 ---
 
@@ -48,11 +59,10 @@ matchreact web application - [link](https:// "matchreact link")
 
 ---
 
-## 📥installation
-
-clone the repository:
+## 📥clone and run repo
 
 ```bash
 git clone https://github.com/klausigner/matchreact.git
 cd matchreact
+npm run dev
 ```

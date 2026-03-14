@@ -42,8 +42,8 @@ app.set("views", path.join(__dirname, "src/frontend/views"));
 
 // Activate .env
 dotenv.config();
-const SRV_PORT = process.env.SRV_PORT;
-const SRV_HOSTNAME = process.env.SRV_HOSTNAME;
+const PORT = process.env.PORT || process.env.SRV_PORT;
+const HOSTNAME = process.env.SRV_URL;
 
 // Connect and sync table
 (async () => { 
@@ -59,8 +59,8 @@ const SRV_HOSTNAME = process.env.SRV_HOSTNAME;
         await sequelize.sync();
 
         // Server launch
-        app.listen(SRV_PORT, SRV_HOSTNAME, () => {
-            console.log(`Listening for requests on http://${SRV_HOSTNAME}:${SRV_PORT}`);
+        app.listen(PORT, HOSTNAME, () => {
+            console.log(`Listening for requests on ${HOSTNAME}`);
         });
     }
 

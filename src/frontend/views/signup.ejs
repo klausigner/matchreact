@@ -42,6 +42,12 @@
             </div>
         </div>
 
+        <% if (error) { %>
+            <div class="div__error">
+                <p><%= error %></p>
+            </div>
+        <% } %>
+
         <button class="signup__form--button" type="submit">sign up</button>
 
         <div class="signup__form--link">

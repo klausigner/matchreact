@@ -8,7 +8,7 @@ const router = express.Router();
 
 // GET signup
 router.get('/', (_, res) => {
-    res.render("signup");
+    res.render("signup", { error: "" });
 });
 
 // POST signup
@@ -17,26 +17,26 @@ router.post("/",
         body("username")
             .trim()
             .isLength({ min: 3, max: 20 })
-            .withMessage("Username must be between 3 and 20 characters")
+            .withMessage("username must be between 3 and 20 characters")
             .matches(/^[a-z0-9_]+$/)
-            .withMessage("Username can only contain lowercase letters, numbers, and underscores"),
+            .withMessage("username can only contain lowercase letters, numbers, and underscores"),
 
         body("club")
             .trim()
             .notEmpty()
-            .withMessage("Favorite club is required")
-            .isLength({ min: 3, max: 10 })
+            .withMessage("favorite club is required")
+            .isLength({ min: 3, max: 12 })
             .withMessage("Favorite club must be between 3 and 10"),
 
         body('email')
             .trim()
             .isEmail()
             .normalizeEmail()
-            .withMessage('Please provide a valid email address'),
+            .withMessage('please provide a valid email address'),
 
         body("password")
             .isLength({ min: 8, max: 32 })
-            .withMessage("Password must be within 8-32 characters")
+            .withMessage("password must be within 8-32 characters")
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -65,11 +65,11 @@ router.post("/",
         catch (err) {
             if (err.name === 'SequelizeUniqueConstraintError') {
                 return res.status(400).render("signup", { 
-                    error: "Email or username already exists"
+                    error: "email or username already exists"
                 });
             }
 
-            return res.status(500).render("signup", { error: "Something went wrong" });
+            return res.status(500).render("signup", { error: "something went wrong" });
         }
     }
 );

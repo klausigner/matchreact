@@ -32,6 +32,12 @@
             </div>
         </div>
 
+        <% if (error) { %>
+            <div class="div__error">
+                <p><%= error %></p>
+            </div>
+        <% } %>
+
         <button class="login__form--button" type="submit">log in</button>
 
         <div class="login__form--link">

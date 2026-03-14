@@ -171,3 +171,24 @@ body {
     text-decoration-color: var(--gray-48);
     cursor: pointer;
 }
+
+.div__error {
+    width: 368px;
+    height: 40px;
+
+    background-color: rgba(255, 0, 0, 0.06);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid rgba(255, 0, 0, 0.48);
+    border-radius: 6px;
+}
+
+.div__error {
+    color: rgba(255, 0, 0, 0.56);
+
+    font-size: 14px;
+    font-weight: 500;
+}

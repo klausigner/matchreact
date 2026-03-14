@@ -10,7 +10,7 @@ const router = express.Router();
 
 // GET login
 router.get('/', (_, res) => {
-    res.render("login");
+    res.render("login", { error: '' });
 });
 
 // POST login
@@ -19,11 +19,11 @@ router.post("/",
         body('email')
             .trim()
             .isEmail()
-            .withMessage('Enter a valid email'),
+            .withMessage('enter a valid email'),
 
         body('password')
             .notEmpty()
-            .withMessage('Password is required')
+            .withMessage('password is required')
     ], 
     async (req, res) => {
         const errors = validationResult(req);
@@ -40,11 +40,11 @@ router.post("/",
                 attributes: ['id', 'username', 'email', 'password']
             });
 
-            if (!user) return res.status(401).render('login', { error: 'User not found' });
+            if (!user) return res.status(401).render('login', { error: 'user not found' });
 
             const isValidPassword = await argon2.verify(user.password, password);
 
-            if (!isValidPassword) return res.status(401).render('login', { error: 'Incorrect password' });
+            if (!isValidPassword) return res.status(401).render('login', { error: 'incorrect password' });
 
             const token = jwt.sign(
                 { id: user.id, username: user.username },
@@ -62,7 +62,7 @@ router.post("/",
         }
 
         catch (err) {
-            return res.status(500).render('login', { error: 'Something went wrong' });
+            return res.status(500).render('login', { error: 'something went wrong' });
         }
     }
 );

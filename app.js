@@ -56,7 +56,7 @@ const HOSTNAME = process.env.SRV_URL;
         Post.belongsTo(User, { foreignKey: 'userId' });
 
         // Create users table if it doesn't exist  
-        await sequelize.sync();
+        await sequelize.sync({ alter: true });
 
         // Server launch
         app.listen(PORT, HOSTNAME, () => {

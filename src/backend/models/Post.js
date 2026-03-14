@@ -25,7 +25,7 @@ Post.init(
         },
 
         hometeam: { 
-            type: DataTypes.STRING(10), 
+            type: DataTypes.STRING(12), 
             allowNull: false,
             validate: {
                 len: [3, 10],
@@ -33,7 +33,7 @@ Post.init(
         },
 
         awayteam: { 
-            type: DataTypes.STRING(10), 
+            type: DataTypes.STRING(12), 
             allowNull: false,
             validate: {
                 len: [3, 10],
@@ -41,7 +41,7 @@ Post.init(
         },
 
         competition: { 
-            type: DataTypes.STRING(10), 
+            type: DataTypes.STRING(12), 
             allowNull: false,
             validate: {
                 len: [3, 10],
@@ -54,7 +54,7 @@ Post.init(
         },
 
         mood: { 
-            type: DataTypes.STRING(10), 
+            type: DataTypes.STRING(12), 
             allowNull: false,
         },
 

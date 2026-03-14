@@ -64,5 +64,5 @@ matchreact web application - [link](https://matchreact.onrender.com "matchreact 
 ```bash
 git clone https://github.com/klausigner/matchreact.git
 cd matchreact
-npm run dev
+npm install
 ```

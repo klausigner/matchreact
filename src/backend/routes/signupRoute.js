@@ -26,7 +26,7 @@ router.post("/",
             .notEmpty()
             .withMessage("favorite club is required")
             .isLength({ min: 3, max: 12 })
-            .withMessage("Favorite club must be between 3 and 10"),
+            .withMessage("favorite club must be between 3 and 10"),
 
         body('email')
             .trim()

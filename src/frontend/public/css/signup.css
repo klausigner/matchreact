@@ -192,3 +192,24 @@ body {
     font-size: 14px;
     font-weight: 500;
 }
+
+.div__success {
+    width: 368px;
+    height: 40px;
+
+    background-color: rgba(0, 128, 0, 0.06);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid rgba(0, 128, 0, 0.48);
+    border-radius: 6px;
+}
+
+.div__success {
+    color: rgba(0, 128, 0, 0.56);
+
+    font-size: 14px;
+    font-weight: 500;
+}

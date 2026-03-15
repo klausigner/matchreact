@@ -8,7 +8,7 @@ const router = express.Router();
 
 // GET signup
 router.get('/', (_, res) => {
-    res.render("signup", { error: "" });
+    res.render("signup", { error: "", success: "" });
 });
 
 // POST signup
@@ -42,7 +42,7 @@ router.post("/",
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            return res.status(400).render("signup", { error: "1 or more incorrect field(s)" });
+            return res.status(400).render("signup", { error: "1 or more incorrect field(s)", success: "" });
         };
 
         let { username, email, club, password } = req.body;
@@ -59,7 +59,7 @@ router.post("/",
                 password
             });
 
-            return res.redirect("/dashboard");
+            return res.render("signup", { error: "", success: "signup successful, please login"});
         }
 
         catch (err) {
@@ -69,7 +69,7 @@ router.post("/",
                 });
             }
 
-            return res.status(500).render("signup", { error: "something went wrong" });
+            return res.status(500).render("signup", { error: "something went wrong", success: "" });
         }
     }
 );

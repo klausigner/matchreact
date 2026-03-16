@@ -16,6 +16,7 @@ router.post("/",
     [
         body("username")
             .trim()
+            .toLowerCase()
             .isLength({ min: 3, max: 20 })
             .withMessage("username must be between 3 and 20 characters")
             .matches(/^[a-z0-9_]+$/)
@@ -23,6 +24,7 @@ router.post("/",
 
         body("club")
             .trim()
+            .toLowerCase()
             .notEmpty()
             .withMessage("favorite club is required")
             .isLength({ min: 3, max: 12 })
